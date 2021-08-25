@@ -3,10 +3,6 @@
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -14,8 +10,16 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:jsx-a11y/recommended",
+      "airbnb"
+    ],
     "plugins": [
-        "react"
+      "react",
+      "react-hooks",
+      "jsx-a11y"
     ],
     "rules": {
       "react/jsx-filename-extension": [
@@ -159,17 +163,6 @@
       //最下面要有下一行 require or disallow newline at the end of files
       "eol-last": [
         "error"
-      ],
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          "components": [
-            "Link"
-          ],
-          "specialLink": [
-            "to"
-          ]
-        }
       ],
       "react-hooks/rules-of-hooks": "error",
       "no-use-before-define": [
