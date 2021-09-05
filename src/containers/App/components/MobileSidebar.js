@@ -45,18 +45,6 @@ const MenuWrapper = styled.div`
     opacity: 0;
   }
 `;
-// 主選單
-const MainItem = ({ key, to, icon, title, }) => (
-  <Menu.Item key={key} icon={icon} style={{ marginTop: 0, marginBottom: 0, padding: '0.75rem' }}>
-    <Link to={to}>{title}</Link>
-  </Menu.Item>);
-
-// 子選單
-const NestItem = ({ key, icon, title, content }) => (
-  <SubMenu key={key} icon={icon} title={title}>
-    {content.map(sub => MainItem(sub))}
-  </SubMenu>
-);
 
 /**
  * 我只想用最多2層的menu item
@@ -65,12 +53,35 @@ const NestItem = ({ key, icon, title, content }) => (
  * @param {*} props
  */
 function MobileSidebar(props) {
-  const { show = false } = props;
+  const { show = false, onMenuClick } = props;
   // const history = useHistory();
   const { pathname } = useLocation();
 
   const selectedPath = _slice(_split(pathname, '/', 3), 1);
   const selectedKey = _join(selectedPath, '-').toLowerCase();
+
+  // 主選單
+  const MainItem = ({ key, to, icon, title, }) => (
+    <Menu.Item
+      key={key}
+      icon={icon}
+      onClick={onMenuClick}
+      style={{ marginTop: 0, marginBottom: 0, padding: '0.75rem' }}
+    >
+      <Link to={to}>{title}</Link>
+    </Menu.Item>);
+
+  // 子選單
+  const NestItem = ({ key, icon, title, content }) => (
+    <SubMenu
+      key={key}
+      icon={icon}
+      title={title}
+      onClick={onMenuClick}
+    >
+      {content.map(sub => MainItem(sub))}
+    </SubMenu>
+  );
 
   return (
     <MenuWrapper className={show ? 'active' : 'hidden'}>

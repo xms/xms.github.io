@@ -56,7 +56,7 @@ export default function App() {
         <Weather />
       </StyledHeader>
       <Content className="site-layout" style={{ minHeight: 'calc(100vh - 138px)' }}>
-        <MobileSidebar show={showSidebar} />
+        <MobileSidebar show={showSidebar} onMenuClick={handleToggleSidebar} />
         {/* <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>List</Breadcrumb.Item>
