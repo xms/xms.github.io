@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, } from 'react-router-dom';
 import { Provider } from 'react-redux';
-// import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.css';
+import 'styles/index.less';
 
 import IndexRoute from 'routes/IndexRoute';
 import Spinner from 'components/Spinner';

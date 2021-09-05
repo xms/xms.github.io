@@ -1,30 +1,32 @@
 import React from 'react';
-import { PieChartOutlined, DashboardOutlined } from '@ant-design/icons';
+import { AreaChartOutlined, HighlightOutlined, ProfileOutlined } from '@ant-design/icons';
 
+const iconStyle = { style: { fontSize: '1.25rem' } };
 const sidebarSetting = [
   {
     key: 'profile',
     to: '/profile',
-    icon: <DashboardOutlined />,
+    icon: <ProfileOutlined {...iconStyle} />,
     title: 'Profile',
+    description: '個人檔案',
     content: [],
   },
   {
-    key: 'fun',
-    to: null,
-    icon: <PieChartOutlined />,
-    title: 'Functions',
-    content: [
-      {
-        key: 'fun-worklist',
-        to: '/fun/worklist',
-        icon: null,
-        title: 'Work List',
-        content: [],
-      },
-    ],
+    key: 'worklist',
+    to: '/worklist',
+    icon: <HighlightOutlined {...iconStyle} />,
+    title: 'Work list',
+    description: '作品集',
+    content: [],
+  },
+  {
+    key: 'endless',
+    to: '/endless',
+    icon: <AreaChartOutlined {...iconStyle} />,
+    title: 'Endless chart',
+    description: '串接socket圖表',
+    content: [],
   },
 ];
-
 
 export default sidebarSetting;

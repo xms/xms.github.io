@@ -18,12 +18,6 @@ function useLoading(props) {
   };
 }
 
-// const useLoading = (props) => {
-//   const param1 = 'test123';
-//   const param2 = 'test456';
-//   return { param1, param2 };
-// }
-
 const mapStateToProps = (state) => ({
   // loading: state.LoadingReducer.loading,
 });
