@@ -12,7 +12,7 @@ const StyledHeader = styled(Header)`
   width: 100%;
   display: flex;
   font-size: 1rem;
-  position: absolute;
+  position: relative;
   overflow: hidden;
   ul {
     flex-grow: 1;
@@ -24,6 +24,10 @@ const StyledHeader = styled(Header)`
       flex: 1;
     }
   }
+
+  .sidebar-togger {
+      display: none;
+    }
   @media screen and (max-width: 800px){
     flex-direction: row;
     justify-content: space-between;
@@ -32,11 +36,14 @@ const StyledHeader = styled(Header)`
     .sidebar {
       display: none;
     }
+    .sidebar-togger {
+      display: block;
+    }
   }
 `;
 
 export default function App() {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function handleToggleSidebar() {
     setShowSidebar(!showSidebar);
@@ -44,12 +51,12 @@ export default function App() {
   return (
     <Layout>
       <StyledHeader>
-        <Button onClick={handleToggleSidebar} icon={<MenuOutlined />} />
+        <Button onClick={handleToggleSidebar} icon={<MenuOutlined />} className="sidebar-togger" />
         <Sidebar />
         <Weather />
       </StyledHeader>
       <Content className="site-layout" style={{ minHeight: 'calc(100vh - 138px)' }}>
-        <MobileSidebar show={showSidebar} />
+        <MobileSidebar show={showSidebar} onMenuClick={handleToggleSidebar} />
         {/* <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>List</Breadcrumb.Item>
