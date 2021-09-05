@@ -8,6 +8,7 @@ const sidebarSetting = [
     to: '/profile',
     icon: <ProfileOutlined {...iconStyle} />,
     title: 'Profile',
+    description: '個人檔案',
     content: [],
   },
   {
@@ -15,16 +16,16 @@ const sidebarSetting = [
     to: '/worklist',
     icon: <HighlightOutlined {...iconStyle} />,
     title: 'Work list',
-    content: [
-    ],
+    description: '作品集',
+    content: [],
   },
   {
     key: 'endless',
     to: '/endless',
     icon: <AreaChartOutlined {...iconStyle} />,
     title: 'Endless chart',
-    content: [
-    ],
+    description: '串接socket圖表',
+    content: [],
   },
 ];
 

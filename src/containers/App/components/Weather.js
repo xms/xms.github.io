@@ -57,7 +57,7 @@ function WeatherComponent() {
   }
 
   return (
-    <Weather>
+    <Weather className="weather">
       <Tooltip title={`${weather.startTime} ~ ${weather.endTime}`}>
         降雨機率:
       </Tooltip>
