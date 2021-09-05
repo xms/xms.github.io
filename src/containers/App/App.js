@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Button } from 'antd';
+import { Layout, Button, Row, Col } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
@@ -42,6 +42,14 @@ const StyledHeader = styled(Header)`
   }
 `;
 
+const colSpan = {
+  xs: 24,
+  md: 22,
+  lg: 16,
+  xl: 16,
+  xxl: 16,
+};
+
 export default function App() {
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -55,16 +63,18 @@ export default function App() {
         <Sidebar />
         <Weather />
       </StyledHeader>
-      <Content className="site-layout" style={{ minHeight: 'calc(100vh - 138px)' }}>
+      <Content style={{ minHeight: 'calc(100vh - 138px)', padding: '2rem' }}>
         <MobileSidebar show={showSidebar} onMenuClick={handleToggleSidebar} />
         {/* <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>List</Breadcrumb.Item>
         <Breadcrumb.Item>App</Breadcrumb.Item>
       </Breadcrumb> */}
-        <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-          <AppRoute />
-        </div>
+        <Row justify="center">
+          <Col {...colSpan}>
+            <AppRoute />
+          </Col>
+        </Row>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Li-Yun Chang ©2021 </Footer>
     </Layout>
