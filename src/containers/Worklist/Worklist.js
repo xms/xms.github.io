@@ -1,12 +1,11 @@
 import React from 'react';
 
-function Profile() {
+function Worklist() {
   return (
     <>
-      Profile
-
+      Worklist
     </>
   );
 }
 
-export default Profile;
+export default Worklist;

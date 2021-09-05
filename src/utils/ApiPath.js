@@ -1,11 +1,10 @@
-const mergePath = (baseUrl) => (route) => `${baseUrl}${route}`;
+const { baseUrl } = window.APP_CONFIG;
 
-const site = sessionStorage.getItem('site');
-const { baseUrl } = window.APP_CONFIG[site || 'default'];
-const MesUserApi = mergePath(baseUrl.mesUserApi);
-const MesReportApi = mergePath(baseUrl.mesReportApi);
-const ReportApi = mergePath(baseUrl.reportApi);
+// apply single
+const mergePath = (base) => (route) => `${base}${route}`;
+const GovApi = mergePath(baseUrl.gov.URL);
 
+// apply multiple
 const ApplyApis = fn => (routes) => {
   let result = {};
   Object.keys(routes).forEach(rk => {
@@ -14,18 +13,14 @@ const ApplyApis = fn => (routes) => {
   return result;
 };
 
-const ApplyMesUser = ApplyApis(MesUserApi);
-const ApplyReport = ApplyApis(ReportApi);
-const ApplyMesReport = ApplyApis(MesReportApi);
+const ApplyGov = ApplyApis(GovApi);
 
 export {
   mergePath,
 
-  MesUserApi,
-  ReportApi,
-  MesReportApi,
+  // single
+  GovApi,
 
-  ApplyMesUser,
-  ApplyReport,
-  ApplyMesReport,
+  // multiple
+  ApplyGov,
 };

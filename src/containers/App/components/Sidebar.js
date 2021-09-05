@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 // import styled from 'styled-components';
-import { Layout, Menu } from 'antd';
+import { Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import _split from 'lodash/split';
 import _slice from 'lodash/slice';
 import _join from 'lodash/join';
 import setting from 'routes/SidebarSetting';
 
-
-const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const MainItem = ({ key, to, icon, title }) => (
@@ -30,7 +28,6 @@ const NestItem = ({ key, icon, title, content }) => (
  * @param {*} props
  */
 function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
   // const history = useHistory();
   const { pathname } = useLocation();
 
@@ -38,16 +35,14 @@ function Sidebar() {
   const selectedKey = _join(selectedPath, '-').toLowerCase();
 
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-      <Menu
-        theme="dark"
-        defaultSelectedKeys={[selectedKey || setting[0].key]}
-        defaultOpenKeys={[selectedPath?.[0]]}
-        mode="horizontal"
-      >
-        {setting.map(item => (item.content.length ? NestItem(item) : MainItem(item)))}
-      </Menu>
-    </Sider>
+    <Menu
+      theme="dark"
+      defaultSelectedKeys={[selectedKey || setting[0].key]}
+      defaultOpenKeys={[selectedPath?.[0]]}
+      mode="horizontal"
+    >
+      {setting.map(item => (item.content.length ? NestItem(item) : MainItem(item)))}
+    </Menu>
   );
 }
 
