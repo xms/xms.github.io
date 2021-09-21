@@ -35,7 +35,7 @@ function WeatherComponent() {
         offset: 0,
         locationName: '前鎮區',
         elementName: 'PoP6h',
-        timeTo: moment().endOf('day').format('YYYY-MM-DDTHH:mm:ss'),
+        timeFrom: moment().format('YYYY-MM-DDTHH:mm:ss'),
       };
       const { success = false, records = null } = await getAxios.exec(Gov.Weather, { params });
       if (!success) {
@@ -69,3 +69,4 @@ function WeatherComponent() {
 }
 
 export default WeatherComponent;
+// API doc: https://opendata.cwb.gov.tw/dist/opendata-swagger.html#/%E9%A0%90%E5%A0%B1/get_v1_rest_datastore_F_D0047_065

@@ -14,14 +14,20 @@ const StyledHeader = styled(Header)`
   font-size: 1rem;
   position: relative;
   overflow: hidden;
-  ul {
+  background-image: linear-gradient(#023047, #001845);
+  ul.sidebar {
     flex-grow: 1;
     display: flex;
     align-items: center;
     text-align: center;
+    background: transparent;
     li {
       font-size: 1rem;
       flex: 1;
+      &:hover {
+        /* TODO: 要調整權重，目前無效 QQ */
+        background: rgba(255, 255, 255, 0.5);
+      }
     }
   }
 
@@ -33,12 +39,19 @@ const StyledHeader = styled(Header)`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    .sidebar {
+    ul.sidebar {
       display: none;
     }
     .sidebar-togger {
       display: block;
     }
+  }
+`;
+
+const ContentWrapper = styled(Content)`
+  min-height: calc(100vh - 138px);
+  .content {
+    padding: 2rem 50px;
   }
 `;
 
@@ -63,19 +76,19 @@ export default function App() {
         <Sidebar />
         <Weather />
       </StyledHeader>
-      <Content style={{ minHeight: 'calc(100vh - 138px)', padding: '2rem' }}>
+      <ContentWrapper>
         <MobileSidebar show={showSidebar} onMenuClick={handleToggleSidebar} />
         {/* <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>List</Breadcrumb.Item>
         <Breadcrumb.Item>App</Breadcrumb.Item>
       </Breadcrumb> */}
-        <Row justify="center">
+        <Row justify="center" className="content">
           <Col {...colSpan}>
             <AppRoute />
           </Col>
         </Row>
-      </Content>
+      </ContentWrapper>
       <Footer style={{ textAlign: 'center' }}>Li-Yun Chang ©2021 </Footer>
     </Layout>
   );
